@@ -1,11 +1,11 @@
 $(document).ready(() => {
     const apiKey = "cf19e26cd84560f303a4c185e64c50ca";
+    const forecastDiv = $("#forecast");
 
     const getCurrentWeather = () => {
         navigator.geolocation.getCurrentPosition((position) => {
             console.log(position.coords);
             const { latitude, longitude } = position.coords;
-            const forecastDiv = $("#forecast");
 
             // get city name
             fetch(`http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${apiKey}`)
@@ -16,7 +16,7 @@ $(document).ready(() => {
                 })
                 .then((data) => {
                     const { name } = data[0];
-                    $("#city-name").text(name);
+                    $("#city-name").text(`for ${name}`);
                     return fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}`);
                 })
                 .then((res) => {
@@ -41,17 +41,23 @@ $(document).ready(() => {
                         const temp = $("<p></p>");
                         temp.text((forecast.main.temp - 273.15).toFixed(2));
                         temp.addClass("temperature card-text");
-                        
+
                         cardBody.append(day);
                         cardBody.append(icon);
                         cardBody.append(temp);
-                        
+
                         forecastCard.append(cardBody);
                         forecastDiv.append(forecastCard);
                     }
                 })
-        }, (e) => $("#forecastBit").remove());
+        }, (e) => {
+            $("#locationModal").modal('show');
+            const errMsg = $("<h2></h2>");
+            errMsg.text("If you turn on location, you will be able to see a 5-day forecast here.");
+            errMsg.attr("id", "locationMessage");
+            forecastDiv.append(errMsg);
+        });
     }
-    
+
     getCurrentWeather();
 });

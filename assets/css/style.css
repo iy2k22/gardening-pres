@@ -110,3 +110,7 @@ footer {
 .temperature::after {
     content: " °C";
 }
+
+#locationMessage {
+    text-align: center;
+}
