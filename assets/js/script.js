@@ -26,7 +26,6 @@ $(document).ready(() => {
                 })
                 .then(({ list }) => {
                     const relevant = list.filter(({ dt_txt }) => dt_txt.slice(11, 13) === '12');
-                    console.log(relevant);
                     for (let forecast of relevant) {
                         const forecastCard = $("<div></div>");
                         forecastCard.addClass("card col-lg-2 col-md-2 col-sm-12");
