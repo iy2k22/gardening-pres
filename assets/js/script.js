@@ -16,7 +16,7 @@ $(document).ready(() => {
                 })
                 .then((data) => {
                     const { name } = data[0];
-                    $("#city-name").text(`for ${name}`);
+                    $("#city-name").text(`${name}`);
                     return fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}`);
                 })
                 .then((res) => {
