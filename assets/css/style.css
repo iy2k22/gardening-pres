@@ -114,3 +114,11 @@ footer {
 .inspo {
     background-color: var(--Green);
 }
+
+.temperature::after {
+    content: " °C";
+}
+
+#locationMessage {
+    text-align: center;
+}
