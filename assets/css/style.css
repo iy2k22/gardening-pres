@@ -33,6 +33,14 @@ h2 {
     font-weight: bold;
 }
 
+h4 {
+    color: var(--Medium-Green);
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: bold;
+
+}
+
 h5 {
     font-size: 14px;
     color: white;
