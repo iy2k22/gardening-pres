@@ -107,6 +107,18 @@ footer {
 
 }
 
+.modal-content {
+    background-color: #8b8515;
+}
+
+.modal-header {
+    border-bottom: 0 none;
+}
+
+.modal-footer {
+    border-top: 0 none;
+}
+
 .plant-search {
     background-color: var(--Light-Green);
 }
