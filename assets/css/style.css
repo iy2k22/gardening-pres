@@ -34,10 +34,10 @@ h2 {
 }
 
 h4 {
-    color: var(--Medium-Green);
-    margin-bottom: 15px;
-    font-size: 18px;
-    font-weight: bold;
+    color: black;
+    margin-bottom: 10px;
+    font-size: 20px;
+
 
 }
 
@@ -70,6 +70,17 @@ footer {
     padding: 20px 50px;
     color: white;
     text-align: center;
+}
+
+.form-switch {
+    margin-bottom: 10px;
+}
+
+.form-switch .form-check-input:checked {
+    background-color: var(--Dark-Green);
+    border-color: var(--Light-Green);
+    border: none;
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba(255,255,255,1.0)'/></svg>");
 }
 
 .btn {
@@ -105,6 +116,18 @@ footer {
     margin-right: auto;
     width: 70%;
 
+}
+
+.modal-content {
+    background-color: #8b8515;
+}
+
+.modal-header {
+    border-bottom: 0 none;
+}
+
+.modal-footer {
+    border-top: 0 none;
 }
 
 .plant-search {
