@@ -1,3 +1,4 @@
+//Weather display
 $(document).ready(() => {
     const apiKey = "cf19e26cd84560f303a4c185e64c50ca";
     const forecastDiv = $("#forecast");
@@ -61,3 +62,20 @@ $(document).ready(() => {
 
     getCurrentWeather();
 });
+
+//Plant search modal: validate and store data upon submit, and reset the form
+$('#plantSearchBtn').click(function () {
+    var userPlantName = $('#userPlantName');
+    var userSciPlantName = $('#userSciPlantName');
+    $("#plantsearch").trigger("reset");
+});
+
+//Plant search modal: validation
+
+
+
+//Inspo modal: store data upon submit and reset form
+$('#getinspoBtn').click(function () {
+    $(".form-check-input").removeAttr("checked");
+});
+
