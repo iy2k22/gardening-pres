@@ -12,7 +12,11 @@ $(document).ready(function(){
        
         // Plant List - search by plant keyword under 'q' to return 'ID'
         fetch("https://perenual.com/api/species-list?q=" + userPlantInput + "&key=" + plantApiKey, requestOptions)
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok)
+                    throw new Error("network error");
+                return response.json()
+            })
             .then(result => {
                 plantChoices = result.data.filter((plant) => {
                     return plant.common_name.includes(userPlantInput);
