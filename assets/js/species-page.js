@@ -21,7 +21,7 @@ const required = [
 ];
 
 $(document).ready(() => {
-    const plantApiKey = "sk-kPNw65947c4f242023634";
+    const plantApiKey = "sk-w8gg6585d74096b923574";
     const genBlock = (data) => {
         const newBlock = $("<div></div>");
         newBlock.attr("id", data.id);
@@ -75,6 +75,15 @@ $(document).ready(() => {
     const plantId = Number(searchParams.get("id"));
 
     fetch(`https://perenual.com/api/species/details/${plantId}?key=${plantApiKey}`, requestOptions)
-    .then((res) => res.json())
-    .then((results) => genBlock(results));
+    .then((res) => {
+        if (!res.ok)
+            throw new Error("error occurred");
+        return res.json();
+    })
+    .then((results) => genBlock(results))
+    .catch(() => {
+        const errTxt = $("<h1></h1>");
+        errTxt.text("There was an error fetching the data.");
+        $(document.body).append(errTxt);
+    })
 });
