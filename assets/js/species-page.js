@@ -25,7 +25,7 @@ $(document).ready(() => {
     const genBlock = (data) => {
         const newBlock = $("<div></div>");
         newBlock.attr("id", data.id);
-        const nameEl = $("<h2></h2>");
+        const nameEl = $("<h1></h1>");
         const imageEl = $("<img>");
         const qualList = $("<ul></ul>");
         nameEl.text(data.common_name);
@@ -68,8 +68,11 @@ $(document).ready(() => {
     method: 'GET',
     redirect: 'follow'
     };
+    
+    const searchParams = new URLSearchParams(window.location.search);
+    const plantId = Number(searchParams.get("id"));
 
-    fetch(`https://perenual.com/api/species/details/66?key=${plantApiKey}`, requestOptions)
+    fetch(`https://perenual.com/api/species/details/${plantId}?key=${plantApiKey}`, requestOptions)
     .then((res) => res.json())
     .then((results) => genBlock(results));
 });
