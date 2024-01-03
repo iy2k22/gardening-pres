@@ -17,10 +17,11 @@ $(document).ready(() => {
             const plantEl = $("<li></li>");
             plantEl.attr("id", plant.id);
             const link = $("<a></a>");
-            link.attr("href", "./species-page.html");
+            link.attr("href", `./species-page.html?id=${plant.id}`);
             const head = $("<h2></h2>");
             head.text(plant.common_name);
-            plantEl.append(head);
+            link.append(head);
+            plantEl.append(link);
             if (plant.default_image) {
                 const plantImg = $("<img>");
                 plantImg.attr("src", plant.default_image.thumbnail);
