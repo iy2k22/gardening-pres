@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
     $("#plant-confirm-btn").on("click", function(){
-        let plantApiKey = "sk-Jxju658491ed6a8d13552";
+        let plantApiKey = "sk-w8gg6585d74096b923574";
         let userPlantInput = $("#userPlantName").val().toLowerCase().trim();
         console.log(userPlantInput);
         let requestOptions = {
@@ -18,16 +18,16 @@ $(document).ready(function(){
                 return response.json()
             })
             .then(result => {
-                plantChoices = result.data.filter((plant) => {
-                    return plant.common_name.includes(userPlantInput);
-                });
+                const plantRegex = new RegExp(userPlantInput, 'gi');
+                console.log(result.data);
+                plantChoices = result.data.filter(({ common_name }) => common_name.match(plantRegex));
                 console.log(plantChoices);
-                return fetch(`https://perenual.com/api/species/details/66?key=sk-Jxju658491ed6a8d13552`, requestOptions)
+                return fetch(`https://perenual.com/api/species/details/66?key=${plantApiKey}`, requestOptions)
             })
             .then(response => response.json())
             .then(result => {
                 console.log(result);
-                return fetch(`https://perenual.com/api/species-care-guide-list?Species_ID=66&key=sk-Jxju658491ed6a8d13552`, requestOptions)
+                return fetch(`https://perenual.com/api/species-care-guide-list?Species_ID=66&key=${plantApiKey}`, requestOptions)
             })
             .then(response => response.json())
             .then(result => console.log(result))
