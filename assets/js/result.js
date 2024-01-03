@@ -1,10 +1,13 @@
 $(document).ready(() => {
-    const plantApiKey = "sk-xb196594798a6d05b3635";
+    const plantApiKey = "sk-kPNw65947c4f242023634";
     let requestOptions = {
     method: 'GET',
     redirect: 'follow'
     };
-    fetch(`https://perenual.com/api/species-list?q=Maple&key=${plantApiKey}`, requestOptions)
+    
+    const searchParams = new URLSearchParams(window.location.search);
+    const searchQuery = searchParams.get("q");
+    fetch(`https://perenual.com/api/species-list?q=${searchQuery}&key=${plantApiKey}`, requestOptions)
     .then((res) => {
         if (!res.ok)
             throw new Error('as');
