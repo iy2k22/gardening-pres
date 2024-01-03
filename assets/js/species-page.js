@@ -26,10 +26,8 @@ $(document).ready(() => {
         const newBlock = $("<div></div>");
         newBlock.attr("id", data.id);
         const nameEl = $("<h1></h1>");
-        const imageEl = $("<img>");
-        const qualList = $("<ul></ul>");
         nameEl.text(data.common_name);
-        imageEl.attr("src", data.default_image.thumbnail);
+        const qualList = $("<ul></ul>");
         
         for (let prop of required) {
             const newLi = $("<li></li>");
@@ -58,7 +56,11 @@ $(document).ready(() => {
             qualList.append(newLi);
         }
         $(newBlock).append(nameEl);
-        $(newBlock).append(imageEl);
+        if (data.default_image) {
+            const imageEl = $("<img>");
+            imageEl.attr("src", data.default_image.thumbnail);
+            $(newBlock).append(imageEl);
+        }
         $(newBlock).append(qualList);
         
         $(document.body).append(newBlock);
